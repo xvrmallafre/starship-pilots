@@ -1,0 +1,25 @@
+{
+    "name": "xvrmallafre/module-starship_pilots",
+    "authors": [
+        {
+            "name": "Xavier Mallafré",
+            "email": "xvrmallafre@gmail.com",
+            "role": "Backend Developer"
+        }
+    ],
+    "description": "Magento 2 Module to add starships and pilots from swapi",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "php": "~7.2"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Xvrmallafre\\StarshipPilots\\": ""
+        }
+    }
+}
