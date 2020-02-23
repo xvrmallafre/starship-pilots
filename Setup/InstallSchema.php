@@ -14,7 +14,7 @@ use Zend_Db_Expr;
 /**
  * Class InstallSchema
  *
- * @package Xvrmallafre\StoreReviews\Setup
+ * @package Xvrmallafre\StarshipPilots\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {
@@ -38,14 +38,14 @@ class InstallSchema implements InstallSchemaInterface
         ModuleContextInterface $context
     ) {
         $installer = $setup->startSetup();
-        $reviewsTable = 'pilot';
+        $pilotsTable = 'pilot';
 
-        if (!$installer->tableExists($reviewsTable)) {
+        if (!$installer->tableExists($pilotsTable)) {
             $connection = $installer->getConnection();
 
             try {
                 $table = $connection->newTable(
-                    $installer->getTable($reviewsTable)
+                    $installer->getTable($pilotsTable)
                 )
                     ->addColumn(
                         'pilot_id',
@@ -60,6 +60,30 @@ class InstallSchema implements InstallSchemaInterface
                         'Table identifier'
                     )
                     ->addColumn(
+                        'pim_id',
+                        Table::TYPE_BIGINT,
+                        20,
+                        [
+                            'nullable' => false,
+                            'unique' => true,
+                        ],
+                        'Comment done by client'
+                    )
+                    ->addColumn(
+                        'name',
+                        Table::TYPE_TEXT,
+                        120,
+                        null,
+                        'Pilot name'
+                    )
+                    ->addColumn(
+                        'gender',
+                        Table::TYPE_TEXT,
+                        32,
+                        null,
+                        'Pilot gender'
+                    )
+                    ->addColumn(
                         'created_at',
                         Table::TYPE_DATETIME,
                         null,
@@ -68,9 +92,9 @@ class InstallSchema implements InstallSchemaInterface
                 $installer->getConnection()->createTable($table);
 
                 $installer->getConnection()->addIndex(
-                    $installer->getTable($reviewsTable),
+                    $installer->getTable($pilotsTable),
                     $installer->getIdxName(
-                        $installer->getTable($reviewsTable),
+                        $installer->getTable($pilotsTable),
                         ['pilot_id'],
                         AdapterInterface::INDEX_TYPE_UNIQUE
                     ),
