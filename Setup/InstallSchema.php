@@ -73,14 +73,14 @@ class InstallSchema implements InstallSchemaInterface
                         'name',
                         Table::TYPE_TEXT,
                         120,
-                        null,
+                        [],
                         'Pilot name'
                     )
                     ->addColumn(
                         'gender',
                         Table::TYPE_TEXT,
                         32,
-                        null,
+                        [],
                         'Pilot gender'
                     )
                     ->addColumn(

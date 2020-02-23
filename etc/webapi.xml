@@ -1,9 +1,27 @@
 <?xml version="1.0"?>
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/pilots/pilot/:pimId" method="GET">
-        <service class="Xvrmallafre\StarshipPilots\Api\PilotInterface" method="getPilot"/>
+        <service class="Xvrmallafre\StarshipPilots\Api\PilotRepositoryInterface" method="get"/>
         <resources>
-            <resource ref="anonymous"/>
+            <resource ref="Xvrmallafre_StarshipPilots::pilots"/>
+        </resources>
+    </route>
+    <route url="/V1/pilots/pilot/:pimId" method="PUT">
+        <service class="Xvrmallafre\StarshipPilots\Api\PilotRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Xvrmallafre_StarshipPilots::pilots"/>
+        </resources>
+    </route>
+    <route url="/V1/pilots/pilot" method="POST">
+        <service class="Xvrmallafre\StarshipPilots\Api\PilotRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Xvrmallafre_StarshipPilots::pilots"/>
+        </resources>
+    </route>
+    <route url="/V1/pilots/:pimId" method="DELETE">
+        <service class="Xvrmallafre\StarshipPilots\Api\PilotRepositoryInterface" method="deleteByPimId"/>
+        <resources>
+            <resource ref="Xvrmallafre_StarshipPilots::pilots" />
         </resources>
     </route>
 </routes>

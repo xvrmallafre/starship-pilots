@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Xvrmallafre\StarshipPilots\Api\PilotInterface" type="Xvrmallafre\StarshipPilots\Model\Pilot" />
+    <preference for="Xvrmallafre\StarshipPilots\Api\PilotRepositoryInterface" type="Xvrmallafre\StarshipPilots\Model\PilotRepository" />
+    <preference for="Xvrmallafre\StarshipPilots\Api\Data\PilotInterface" type="Xvrmallafre\StarshipPilots\Model\Data\Pilot" />
+    <preference for="Xvrmallafre\StarshipPilots\Api\Data\PilotSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
 </config>
