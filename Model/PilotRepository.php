@@ -130,6 +130,17 @@ class PilotRepository implements PilotRepositoryInterface
         $pilotModel = $this->pilotFactory->create()->setData($pilotData);
 
         try {
+            if ($this->get($pilot->getPimId())) {
+                $pilotCollection = $this->pilotCollectionFactory->create();
+                $pilotCollection->addFieldToFilter('pim_id', $pilot->getPimId())
+                    ->getFirstItem();
+                $merge = array_merge($pilotCollection->getData()[0], $pilotData);
+                $pilotModel = $this->pilotFactory->create()->setData($merge);
+            }
+        } catch (Exception $e) {
+        }
+
+        try {
             $this->resource->save($pilotModel);
         } catch (Exception $exception) {
             throw new CouldNotSaveException(__(
@@ -137,6 +148,7 @@ class PilotRepository implements PilotRepositoryInterface
                 $exception->getMessage()
             ));
         }
+
         return $pilotModel->getDataModel();
     }
 

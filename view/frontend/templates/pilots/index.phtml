@@ -1,0 +1,21 @@
+<?php $viewModel = $block->getData('viewModel') ?>
+<div class="pilot-list">
+    <div class="actions">
+        <a href="<?= $viewModel->getProductUrl() ?>">
+            <button title="<?= __('Go back to the Product') ?>" class="action primary" id="go-back">
+                <span><?= __('Go back to the Product') ?></span>
+            </button>
+        </a>
+    </div>
+    <div class="pilots">
+        <p><?= __('The pilots for this spaceship are:') ?></p>
+        <ul>
+            <?php foreach($viewModel->getPilots() as $pilot) : ?>
+                <li class="pilot">
+                    <p class="name"><?= __('Name:') ?> <?= $pilot->getName() ?></p>
+                    <p class="gender"><?= __('Gender:') ?> <?= $pilot->getGender() ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
