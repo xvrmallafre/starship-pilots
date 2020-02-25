@@ -1,0 +1,6 @@
+<?php $viewModel = $block->getData('viewModel') ?>
+<?php if ($viewModel->starshipHasPilots()) : ?>
+    <a href="<?= $viewModel->getUrlGotoPilots() ?>" class="action">
+        <span><?= __('Go to see Pilots') ?></span>
+    </a>
+<?php endif ?>
